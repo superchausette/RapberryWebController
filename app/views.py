@@ -2,11 +2,24 @@ from flask import render_template , flash, redirect, session, url_for, request, 
 
 from app import app
 
+def mpd_restart():
+  flash("MPD restarted")
+  app.logger.info("MPD restarted")
+  return redirect(url_for('index'))
 
 @app.route('/')
 @app.route('/index')
 def index():
   return render_template("index.html", title = 'Home')
+
+@app.route("/mpd/",methods = ['POST'])
+def mpd():
+  if request.form['mpd'] == 'Restart MPD':
+    return mpd_restart()
+
+  flash("Unknown request")
+  return redirect(url_for('index'))
+
 
 @app.errorhandler(401)
 def internal_error(error):
