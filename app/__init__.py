@@ -1,8 +1,11 @@
 from flask import Flask
 
+import MPD
+
 app = Flask(__name__)
 app.config.from_object('config')
 
+MDPImpl = MPD.MPD()
 
 if not app.debug:
   import logging
