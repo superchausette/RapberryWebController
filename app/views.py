@@ -1,10 +1,16 @@
 from flask import render_template , flash, redirect, session, url_for, request, g
 
-from app import app
+from app import app, MDPImpl
 
 def mpd_restart():
-  flash("MPD restarted")
-  app.logger.info("MPD restarted",'message')
+  suc, error = MDPImpl.restart()
+  if suc == True:
+    flash("MPD restarted")
+    app.logger.info("MPD restarted",'message')
+  else:
+    flashMsg = "Unable to restart MPD: %s" % error
+    flash(flashMsg,('error'))
+    app.logger.info(flashMsg)
   return redirect(url_for('index'))
 
 @app.route('/')
