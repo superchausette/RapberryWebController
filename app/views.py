@@ -5,8 +5,8 @@ from app import app, MDPImpl
 def mpd_restart():
   suc, error = MDPImpl.restart()
   if suc == True:
-    flash("MPD restarted")
-    app.logger.info("MPD restarted",'message')
+    flash("MPD restarted",'info')
+    app.logger.info("MPD restarted")
   else:
     flashMsg = "Unable to restart MPD: %s" % error
     flash(flashMsg,('error'))
