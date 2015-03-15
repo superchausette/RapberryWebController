@@ -4,20 +4,20 @@ from app import app
 
 def mpd_restart():
   flash("MPD restarted")
-  app.logger.info("MPD restarted")
+  app.logger.info("MPD restarted",'message')
   return redirect(url_for('index'))
 
 @app.route('/')
 @app.route('/index')
 def index():
-  return render_template("index.html", title = 'Home')
+  return render_template("index.html")
 
 @app.route("/mpd/",methods = ['POST'])
 def mpd():
   if request.form['mpd'] == 'Restart MPD':
     return mpd_restart()
 
-  flash("Unknown request")
+  flash("Unknown request",'error')
   return redirect(url_for('index'))
 
 
