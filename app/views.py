@@ -14,7 +14,7 @@ def mpd_restart():
   return redirect(url_for('index'))
 
 
-def lightm_cmd(cmd):
+def lightdm_cmd(cmd):
     if cmd == "start":
         suc, error = LightDMImpl.start()
         if suc == True:
@@ -56,10 +56,10 @@ def mpd():
 
 @app.route("/lightdm/", methods = ['POST'])
 def lightdm():
-    if request.form['lightdm'] == 'Stop lightdm':
-        return lightm_cmd("start")
-    elif request.form['lightdm'] == 'Start lightdm':
-        return lightm_cmd("stop")
+    if request.form['lightdm'] == 'Stop LightDM':
+        return lightdm_cmd("stop")
+    elif request.form['lightdm'] == 'Start LightDM':
+        return lightdm_cmd("start")
 
     flash("Unknown request",'error')
     return redirect(url_for('index'))
