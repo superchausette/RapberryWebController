@@ -7,6 +7,12 @@
 			<form action="{{ url_for('mpd') }}" method="post">
 			  <input type="submit" class="btn btn-primary" name="mpd" value= "Restart MPD"/>
 			</form>
+			<form action="{{ url_for('lightdm') }}" method="post">
+			  <input type="submit" class="btn btn-primary" name="lightdm_stop" value= "Stop lightdm"/>
+			</form>
+			<form action="{{ url_for('lightdm') }}" method="post">
+			  <input type="submit" class="btn btn-primary" name="lightdm_start" value= "Start lightdm"/>
+			</form>
 		</div>
 	</div>
 </div>

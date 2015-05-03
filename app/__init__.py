@@ -1,11 +1,13 @@
 from flask import Flask
 
 import MPD
+import LightDM
 
 app = Flask(__name__)
 app.config.from_object('config')
 
 MDPImpl = MPD.MPD()
+LightDMImpl = LightDM.LightDM()
 
 if not app.debug:
   import logging
