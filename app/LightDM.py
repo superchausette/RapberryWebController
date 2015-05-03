@@ -8,7 +8,7 @@ class LightDM:
 
     def stop(self):
         currentTime = time.time()
-        if currentTime - self.lastStop < 5:
+        if currentTime - self.lastStop < 1:
             err = "Waiting for at least 5 s sinc last stop, only %d s" % (currentTime - self.lastStop)
             return False, err
         cmd = ["service", "lightdm", "stop"]
