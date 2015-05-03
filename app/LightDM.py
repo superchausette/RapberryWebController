@@ -9,7 +9,7 @@ class LightDM:
     def stop(self):
         currentTime = time.time()
         if currentTime - self.lastStop < 5:
-            err = "Waiting for at least 5 s sinc last stop, only %d s" (currentTime - self.lastStop)
+            err = "Waiting for at least 5 s sinc last stop, only %d s" % (currentTime - self.lastStop)
             return False, err
         cmd = ["service", "lightdm", "stop"]
         p = subprocess.Popen(cmd, stdout = subprocess.PIPE,
@@ -26,7 +26,7 @@ class LightDM:
     def start(self):
         currentTime = time.time()
         if currentTime - self.lastStart < 5:
-            err = "Waiting for at least 5 s sinc last start, only %d s" (currentTime - self.lastStart)
+            err = "Waiting for at least 5 s sinc last start, only %d s" % (currentTime - self.lastStart)
             return False, err
         cmd = ["service", "lightdm", "start"]
         p = subprocess.Popen(cmd, stdout = subprocess.PIPE,
